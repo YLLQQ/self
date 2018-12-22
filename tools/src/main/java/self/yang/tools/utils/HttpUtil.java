@@ -2,6 +2,7 @@ package self.yang.tools.utils;
 
 import self.yang.tools.responses.Response;
 import self.yang.tools.responses.ResponseEnum;
+import self.yang.tools.responses.ResponseInterface;
 
 public class HttpUtil {
 
@@ -18,14 +19,26 @@ public class HttpUtil {
     /**
      * 获取失败响应
      *
-     * @param responseEnum
+     * @param responseInterface
+     * @return
+     */
+    public static Response getFailResponse(
+            ResponseInterface responseInterface
+    ) {
+        return getFailResponse(responseInterface, null);
+    }
+
+    /**
+     * 获取失败响应
+     *
+     * @param responseInterface
      * @param result
      * @return
      */
     public static Response getFailResponse(
-            ResponseEnum responseEnum,
+            ResponseInterface responseInterface,
             Object result
     ) {
-        return new Response(responseEnum, result);
+        return new Response(responseInterface, result);
     }
 }

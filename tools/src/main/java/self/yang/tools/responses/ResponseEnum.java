@@ -5,12 +5,12 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum ResponseEnum {
+public enum ResponseEnum implements ResponseInterface {
 
     /**
      * 访问成功
      */
-    SUCCESS(200, "访问成功", null),
+    SUCCESS(200, "访问成功", "visit success"),
 
     /**
      * 接口暂时无法提供服务
@@ -21,7 +21,7 @@ public enum ResponseEnum {
 
     private int code;
 
-    private String desc;
+    private String chDesc;
 
-    private String errorDesc;
+    private String enDesc;
 }

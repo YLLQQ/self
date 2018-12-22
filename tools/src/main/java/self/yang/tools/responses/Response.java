@@ -11,16 +11,19 @@ public class Response implements Serializable {
 
     private int code;
 
-    private String desc;
+    private String chDesc;
+
+    private String enDesc;
 
     private Object result;
 
     public Response(
-            ResponseEnum responseEnum,
+            ResponseInterface responseInterface,
             Object result
     ) {
-        this.code = responseEnum.getCode();
-        this.desc = responseEnum.getDesc();
+        this.code = responseInterface.getCode();
+        this.chDesc = responseInterface.getChDesc();
+        this.enDesc = responseInterface.getEnDesc();
         this.result = result;
     }
 }
