@@ -20,6 +20,7 @@ logging:
   config: classpath:logback.xml
 pagehelper:
   helper-dialect: mysql
-  reasonable: true
+  reasonable: false
   support-methods-arguments: true
+
 

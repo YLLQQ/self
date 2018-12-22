@@ -35,13 +35,13 @@ public class SecondKillConfigTests {
 
     @Test
     public void testSecondKillConfigDOWithPage() {
-        ArrayList<SecondKillConfigDO> secondKillConfigDOList = secondKillConfigMapperService.getSecondKillConfigDOWithPage(1, 5);
+        ArrayList<SecondKillConfigDO> secondKillConfigDOList = secondKillConfigMapperService.getSecondKillConfigDOWithPage(1, 6);
 
         secondKillConfigDOList.stream().forEach(System.out::println);
 
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
-        secondKillConfigDOList = secondKillConfigMapperService.getSecondKillConfigDOWithPage(2, 5);
+        secondKillConfigDOList = secondKillConfigMapperService.getSecondKillConfigDOWithPage(2, 6);
 
         secondKillConfigDOList.stream().forEach(System.out::println);
     }
