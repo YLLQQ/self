@@ -14,6 +14,9 @@ import self.yang.web.desc.ResponseMessageEnum;
 
 import java.util.List;
 
+/**
+ * 全局异常捕捉
+ */
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
