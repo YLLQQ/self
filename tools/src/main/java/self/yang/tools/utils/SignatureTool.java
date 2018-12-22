@@ -45,11 +45,6 @@ public class SignatureTool {
      */
     private static final String TEST_PUB_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsPKkiCUghNKrc4jOCr7xzTlqfrDwDuV7NZzBFoAp8jL8zsszeAnSCliox7J5LOIQOL2ALQhkrI0ZOGsLWsnOqsZ/JBRz2ms6hM6sIgQjt+PsHqjdMH763ux2V6rh7aFbXnXtr1rdLe1MoLxTR7XaEDzTxToo3sMkXwUNNoojGbxZYGKo6GYgLWW1uoxUw0HOdBm1LEpzi6N5u0AWWY39LceWx5pJINufpIAGFSrjQEpRqwIFKeBmzFhAgoiqSj7d27XT0og8mbVHBdkQjWNaukeSRxKKF/4FABFCapULmGhkgLvTWM7COfR7oXL2t9KBkuz9WbX8dupuHr/1By4fNQIDAQAB";
 
-    /**
-     * 网商银行线下环境公钥数据
-     */
-    private static final String MYBANK_PUB_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOb4B1dnwONcW0RoJMa0IOq3O6jiqnTGLUpxEw2xJg+c7wsb6DBy5CAoR0w2ZjZ/BjKxGIQ+DoDg3NsHJeyuEjNF0/Ro/R5xVpFC5z4cBVSC2/gddz4a1EoGDJewML/Iv0yIw7ylB86++h23nRd079c5S9RZXurBfnLW2Srhqk2QIDAQAB";
-
     public static void main(String[] args) throws Exception {
         System.out.println("测试私钥数据如下：");
         System.out.println(TEST_PRIVATE_KEY);
