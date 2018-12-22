@@ -18,6 +18,14 @@ public class SecondKillConfigTests {
     private SecondKillConfigMapperService secondKillConfigMapperService;
 
     @Test
+    public void testDeleteSecondKillConfigDO() {
+        boolean result = secondKillConfigMapperService.deleteSecondKillConfigDO(1);
+
+        System.out.println(result);
+    }
+
+
+    @Test
     public void testSecondKillConfigDO() {
         SecondKillConfigDO secondKillConfigDO = secondKillConfigMapperService.getSecondKillConfigDO(1);
 

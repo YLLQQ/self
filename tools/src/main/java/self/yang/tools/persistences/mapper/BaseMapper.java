@@ -27,7 +27,7 @@ public interface BaseMapper<T extends BaseDO> {
     @Delete("delete from ${tableName} where id=#{id}")
     boolean deleteTbyId(
             @Param("tableName") String tableName,
-            Integer id
+            @Param("id") Integer id
     );
 
     /**

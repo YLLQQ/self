@@ -19,6 +19,15 @@ public class SecondKillConfigMapperService {
      *
      * @return
      */
+    public boolean deleteSecondKillConfigDO(Integer id) {
+        return secondKillConfigMapper.deleteTbyId(TableName.SECOND_KILL_CONFIG, id);
+    }
+
+    /**
+     * 获取所有配置
+     *
+     * @return
+     */
     public ArrayList<SecondKillConfigDO> getAllSecondKillConfigDO() {
         return secondKillConfigMapper.getAllT(TableName.SECOND_KILL_CONFIG);
     }
