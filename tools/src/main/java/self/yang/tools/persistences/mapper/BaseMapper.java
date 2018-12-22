@@ -67,7 +67,7 @@ public interface BaseMapper<T extends BaseDO> {
     @Select("select * from ${tableName} where id=#{id} limit 1")
     T getTbyId(
             @Param("tableName") String tableName,
-            Integer id
+            @Param("id") Integer id
     );
 
 }
