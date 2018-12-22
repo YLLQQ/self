@@ -18,3 +18,8 @@ mybatis:
     map-underscore-to-camel-case: true
 logging:
   config: classpath:logback.xml
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+

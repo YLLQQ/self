@@ -8,7 +8,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import self.yang.web.dos.SecondKillConfigDO;
 import self.yang.web.services.SecondKillConfigMapperService;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Random;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,12 +26,24 @@ public class SecondKillConfigTests {
         System.out.println(result);
     }
 
-
     @Test
     public void testSecondKillConfigDO() {
         SecondKillConfigDO secondKillConfigDO = secondKillConfigMapperService.getSecondKillConfigDO(1);
 
         System.out.println(secondKillConfigDO);
+    }
+
+    @Test
+    public void testSecondKillConfigDOWithPage() {
+        ArrayList<SecondKillConfigDO> secondKillConfigDOList = secondKillConfigMapperService.getSecondKillConfigDOWithPage(1, 5);
+
+        secondKillConfigDOList.stream().forEach(System.out::println);
+
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
+        secondKillConfigDOList = secondKillConfigMapperService.getSecondKillConfigDOWithPage(2, 5);
+
+        secondKillConfigDOList.stream().forEach(System.out::println);
     }
 
     @Test
@@ -43,7 +57,7 @@ public class SecondKillConfigTests {
     public void testInsert() {
         SecondKillConfigDO secondKillConfigDO = new SecondKillConfigDO();
 
-        secondKillConfigDO.setKillProductId(11111);
+        secondKillConfigDO.setKillProductId((int) (Math.random() * 100));
         secondKillConfigDO.setKillProductStock(100);
 
         boolean result = secondKillConfigMapperService.addSecondKillConfig(secondKillConfigDO);

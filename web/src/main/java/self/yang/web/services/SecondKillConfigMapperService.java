@@ -1,5 +1,6 @@
 package self.yang.web.services;
 
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import self.yang.web.config.TableName;
@@ -21,6 +22,22 @@ public class SecondKillConfigMapperService {
      */
     public boolean deleteSecondKillConfigDO(Integer id) {
         return secondKillConfigMapper.deleteTbyId(TableName.SECOND_KILL_CONFIG, id);
+    }
+
+    /**
+     * 分页获取配置
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    public ArrayList<SecondKillConfigDO> getSecondKillConfigDOWithPage(
+            int pageNum,
+            int pageSize
+    ) {
+        PageHelper.startPage(pageNum, pageSize);
+
+        return secondKillConfigMapper.getAllT(TableName.SECOND_KILL_CONFIG);
     }
 
     /**
