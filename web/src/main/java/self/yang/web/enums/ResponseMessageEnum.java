@@ -1,4 +1,4 @@
-package self.yang.web.desc;
+package self.yang.web.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

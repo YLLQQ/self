@@ -1,6 +1,6 @@
 package self.yang.web.dos;
 
-import self.yang.web.config.TableName;
+import self.yang.web.consts.TableName;
 import self.yang.tools.persistences.dos.BaseDO;
 import lombok.Data;
 
@@ -39,5 +39,11 @@ public class SecondKillConfigDO extends BaseDO implements Serializable {
      */
     @Column(name = "kill_start_time")
     private Date killStartTime;
+
+    /**
+     * null
+     */
+    @Column(name = "kill_update_time")
+    private Date killUpdateTime;
 
 }

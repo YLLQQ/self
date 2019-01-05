@@ -1,4 +1,4 @@
-package self.yang.web.config;
+package self.yang.web.handlers;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import self.yang.tools.responses.Response;
 import self.yang.tools.utils.HttpUtil;
-import self.yang.web.desc.ResponseMessageEnum;
+import self.yang.web.enums.ResponseMessageEnum;
 
 
 import java.util.List;

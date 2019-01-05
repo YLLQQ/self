@@ -1,4 +1,4 @@
-package self.yang.web.annos;
+package self.yang.web.aops;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -6,6 +6,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import self.yang.web.annos.DefineAnnotation;
 
 import java.lang.reflect.Method;
 
@@ -22,24 +23,19 @@ public class DefineAspect {
     /**
      * 定义切入点
      */
-    @Pointcut("@annotation(DefineAnnotation)")
+    @Pointcut("@annotation(self.yang.web.annos.DefineAnnotation)")
     public void definePointcut() {
     }
 
     /**
      * 前置增强，在切点方法执行之前执行
      *
-     * @param joinPoint
+     * @param defineAnnotation
      */
-    @Before("definePointcut()")
-    public void beforePointcut(JoinPoint joinPoint) {
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        Method method = methodSignature.getMethod();
-
-        DefineAnnotation annotation = method.getAnnotation(DefineAnnotation.class);
-
+    @Before("definePointcut()&&@annotation(defineAnnotation)")
+    public void beforePointcut(DefineAnnotation defineAnnotation) {
         if (log.isDebugEnabled()) {
-            log.debug("before define annotation value is {}", annotation.value());
+            log.debug("before define annotation is {}", defineAnnotation);
         }
     }
 
@@ -49,19 +45,22 @@ public class DefineAspect {
      * @param proceedingJoinPoint
      * @return
      */
-    @Around("definePointcut()")
-    public Object aroundPointcut(ProceedingJoinPoint proceedingJoinPoint) {
+    @Around("definePointcut()&&@annotation(defineAnnotation)")
+    public Object aroundPointcut(
+            ProceedingJoinPoint proceedingJoinPoint,
+            DefineAnnotation defineAnnotation
+    ) {
 
         Object proceed = null;
+
+        if (log.isDebugEnabled()) {
+            log.debug("around define annotation value is {}", defineAnnotation);
+        }
 
         try {
             proceed = proceedingJoinPoint.proceed();
         } catch (Throwable throwable) {
             log.error("call {} happen exceptions, ", proceedingJoinPoint.getSignature().toShortString(), throwable);
-        }
-
-        if (log.isDebugEnabled()) {
-            log.debug("around define annotation get value is {}", proceed);
         }
 
         return proceed;

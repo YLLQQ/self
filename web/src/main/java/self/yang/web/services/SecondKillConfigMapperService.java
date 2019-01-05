@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import self.yang.web.annos.DefineAnnotation;
-import self.yang.web.config.TableName;
+import self.yang.web.consts.TableName;
 import self.yang.web.dos.SecondKillConfigDO;
 import self.yang.web.mappers.SecondKillConfigMapper;
 
