@@ -81,7 +81,11 @@ public class DataSourceConfig {
         sessionFactory.setDataSource(dataSource);
 
         try {
-            return sessionFactory.getObject();
+            SqlSessionFactory object = sessionFactory.getObject();
+
+            object.openSession().getConfiguration().setMapUnderscoreToCamelCase(true);
+
+            return object;
         } catch (Exception e) {
             log.error("create sql session factory happen exception, error message is ", e);
 

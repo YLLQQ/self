@@ -3,6 +3,7 @@ package self.yang.web.services;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import self.yang.web.annos.DataSourceAnnotation;
 import self.yang.web.annos.DefineAnnotation;
 import self.yang.web.consts.TableName;
 import self.yang.web.dos.SecondKillConfigDO;
@@ -58,6 +59,7 @@ public class SecondKillConfigMapperService {
      * @return
      */
     @DefineAnnotation("getSecondKillConfigDO")
+    @DataSourceAnnotation
     public SecondKillConfigDO getSecondKillConfigDO(Integer id) {
         return secondKillConfigMapper.getTbyId(TableName.SECOND_KILL_CONFIG, id);
     }
