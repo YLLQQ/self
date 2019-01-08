@@ -31,5 +31,7 @@ pagehelper:
   helper-dialect: mysql
   reasonable: false
   support-methods-arguments: true
-
+context:
+  listener:
+    classes: self.yang.web.filters.SelfApplicationListener
 
