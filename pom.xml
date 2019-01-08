@@ -20,6 +20,7 @@
     <modules>
         <module>tools</module>
         <module>web</module>
+        <module>demos</module>
     </modules>
 
     <properties>
