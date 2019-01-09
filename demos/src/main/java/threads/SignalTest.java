@@ -8,17 +8,29 @@ public class SignalTest {
     public static void main(String[] args) {
         MySignal mySignal = new MySignal();
 
-        // 线程持有相同引用
         new Thread(new SignalThread1(mySignal)).start();
-        new Thread(new SignalThread1(mySignal)).start();
-        new Thread(new SignalThread1(mySignal)).start();
-        new Thread(new SignalThread1(mySignal)).start();
-        new Thread(new SignalThread2(mySignal)).start();
-        new Thread(new SignalThread2(mySignal)).start();
 
-        // 线程持有不同引用
-//        new Thread(new SignalThread1(new MySignal())).start();
-//        new Thread(new SignalThread2(new MySignal())).start();
+        new Thread(new SignalThread3(mySignal)).start();
+
+    }
+}
+
+class SignalThread3 implements Runnable {
+
+    MySignal mySignal;
+
+    public SignalThread3(MySignal mySignal) {
+        this.mySignal = mySignal;
+    }
+
+    @Override
+    public void run() {
+
+        while (this.mySignal.hasDataToProcess) {
+            System.out.println(String.format("%s cannot get signal", Thread.currentThread().getId()));
+        }
+
+        System.out.println(String.format("%s get signal", Thread.currentThread().getId()));
     }
 }
 
@@ -32,7 +44,15 @@ class SignalThread1 implements Runnable {
 
     @Override
     public void run() {
-        this.mySignal.setHasDataToProcess(true);
+        this.mySignal.setHasDataToProcess(!this.mySignal.hasDataToProcess);
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this.mySignal.setHasDataToProcess(!this.mySignal.hasDataToProcess);
     }
 }
 
@@ -46,7 +66,8 @@ class SignalThread2 implements Runnable {
 
     @Override
     public void run() {
-
         System.out.println(this.mySignal.hasDataToProcess());
     }
 }
+
+

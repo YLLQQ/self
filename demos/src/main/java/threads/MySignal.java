@@ -9,12 +9,6 @@ public class MySignal {
     }
 
     public synchronized void setHasDataToProcess(boolean hasDataToProcess) {
-        if (this.hasDataToProcess) {
-            System.out.println("hasDataToProcess is true");
-
-            return;
-        }
-
         this.hasDataToProcess = hasDataToProcess;
     }
 }
