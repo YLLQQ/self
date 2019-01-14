@@ -8,9 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import self.yang.web.dos.SecondKillConfigDO;
 import self.yang.web.services.SecondKillConfigMapperService;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Random;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -55,14 +53,18 @@ public class SecondKillConfigTests {
 
     @Test
     public void testInsert() {
-        SecondKillConfigDO secondKillConfigDO = new SecondKillConfigDO();
 
-        secondKillConfigDO.setKillProductId((int) (Math.random() * 100));
-        secondKillConfigDO.setKillProductStock(100);
+        for (int i = 0; i < 10; i++) {
+            SecondKillConfigDO secondKillConfigDO = new SecondKillConfigDO();
 
-        boolean result = secondKillConfigMapperService.addSecondKillConfig(secondKillConfigDO);
+            secondKillConfigDO.setKillProductId((int) (Math.random() * 100));
+            secondKillConfigDO.setKillProductStock(100);
 
-        System.out.println(result);
+            boolean result = secondKillConfigMapperService.addSecondKillConfig(secondKillConfigDO);
+
+            System.out.println(result);
+        }
+
     }
 
 }
