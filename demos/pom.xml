@@ -14,5 +14,12 @@
 
     <description>jdk8环境下样例</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
