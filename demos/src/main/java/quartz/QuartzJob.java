@@ -18,6 +18,9 @@ public class QuartzJob {
         // define the job and tie it to our HelloJob class
         JobDetail job = newJob(HelloJob.class)
                 .withIdentity("myJob", "group")
+                // 传入属性
+                .usingJobData("jobSays", "Hello World!")
+                .usingJobData("myFloatValue", 3.141f)
                 .build();
 
         // Trigger the job to run now, and then every 40 seconds
@@ -25,7 +28,7 @@ public class QuartzJob {
                 .withIdentity("myTrigger", "group")
                 .startNow()
                 .withSchedule(simpleSchedule()
-                        .withIntervalInSeconds(40)
+                        .withIntervalInSeconds(1)
                         .repeatForever())
                 .build();
 
