@@ -26,7 +26,6 @@ public class QuartzJob {
         // Trigger the job to run now, and then every 40 seconds
         SimpleTrigger trigger = newTrigger()
                 .withIdentity("myTrigger", "group")
-                .startNow()
                 .withSchedule(simpleSchedule()
                         .withIntervalInSeconds(1)
                         .repeatForever())
@@ -34,6 +33,8 @@ public class QuartzJob {
 
         // Tell quartz to schedule the job using our trigger
         scheduler.scheduleJob(job, trigger);
+
+        scheduler.start();
     }
 }
 
