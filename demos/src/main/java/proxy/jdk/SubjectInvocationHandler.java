@@ -2,6 +2,8 @@ package proxy.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.lang.reflect.UndeclaredThrowableException;
 
 public class SubjectInvocationHandler implements InvocationHandler {
 
@@ -9,6 +11,13 @@ public class SubjectInvocationHandler implements InvocationHandler {
 
     public SubjectInvocationHandler(Subject subject) {
         this.subject = subject;
+    }
+
+    public Subject getInstance() {
+        return (Subject) Proxy.newProxyInstance(
+                subject.getClass().getClassLoader(),
+                subject.getClass().getInterfaces(),
+                this);
     }
 
     /**
