@@ -29,5 +29,10 @@ public class Test {
 
         subjectProxy.start();
         subjectProxy.end();
+
+        subjectProxy = (Subject) new SubjectProxy(subject).getProxyInstance();
+
+        subjectProxy.start();
+        subjectProxy.end();
     }
 }
