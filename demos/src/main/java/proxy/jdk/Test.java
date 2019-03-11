@@ -4,6 +4,15 @@ import java.lang.reflect.Proxy;
 
 public class Test {
 
+    /**
+     * JDK动态代理机制只能代理实现接口的类，一般没有实现接口的类不能进行代理。cglib就是针对类来实现代理的，它
+     * <p>
+     * 的原理是对指定目标类生成一个子类，并覆盖其中方法实现增强，但因为采用的是继承，所以不能对final修饰的类进
+     * <p>
+     * 行代理。
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         /**
          * 把生成的代理类Class文件保存在本地磁盘上
