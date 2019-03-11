@@ -73,8 +73,6 @@ public class SubjectInvocationHandler implements InvocationHandler {
     ) throws Throwable {
         System.out.println("SubjectInvocationHandler is running");
 
-        method.invoke(subject, args);
-
-        return proxy;
+        return method.invoke(subject, args);
     }
 }
