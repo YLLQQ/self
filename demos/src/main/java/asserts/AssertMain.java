@@ -7,6 +7,6 @@ public class AssertMain {
     }
 
     public static void printException() {
-        Assert.isTrue(false, "has false condition");
+        Assert.stringIsEmpty(" ");
     }
 }
