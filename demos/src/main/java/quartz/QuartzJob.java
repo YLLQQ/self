@@ -31,8 +31,23 @@ public class QuartzJob {
                         .repeatForever())
                 .build();
 
+        JobDetail testJobDetail = newJob(TestMapJob.class)
+                .withIdentity("testJobDetail", "group1")
+                .usingJobData("key", "11111")
+                .usingJobData("value", "2")
+                .build();
+
+        // Trigger the job to run now, and then every 40 seconds
+        SimpleTrigger testJobTrigger = newTrigger()
+                .withIdentity("testJobDetailTrigger", "group1")
+                .withSchedule(simpleSchedule()
+                        .withIntervalInSeconds(1)
+                        .repeatForever())
+                .build();
+
         // Tell quartz to schedule the job using our trigger
         scheduler.scheduleJob(job, trigger);
+        scheduler.scheduleJob(testJobDetail, testJobTrigger);
 
         scheduler.start();
     }
