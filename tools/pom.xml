@@ -10,6 +10,12 @@
     <version>1.0.0</version>
     <description>自建工具类</description>
 
+    <parent>
+        <groupId>org.yang</groupId>
+        <artifactId>self</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
     <properties>
         <java.version>1.8</java.version>
         <java.compiler>1.8</java.compiler>
@@ -70,7 +76,6 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>20.0</version>
         </dependency>
     </dependencies>
 
