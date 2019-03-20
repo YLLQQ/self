@@ -1,9 +1,10 @@
 package self.yang.tools.utils;
 
 import com.fasterxml.uuid.Generators;
+import com.google.common.base.CaseFormat;
 import org.springframework.util.Base64Utils;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 public class MainUtil {
 
@@ -24,13 +25,7 @@ public class MainUtil {
      * @return
      */
     public static String decodeByBase64(String string) {
-        try {
-            return new String(Base64Utils.decodeFromString(string), "utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-
-            return null;
-        }
+        return new String(Base64Utils.decodeFromString(string), StandardCharsets.UTF_8);
     }
 
     /**
@@ -49,7 +44,7 @@ public class MainUtil {
      * @return
      */
     public static String getTopUpperString(String string) {
-        return string.substring(0, 1).toUpperCase() + string.substring(1);
+        return CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_CAMEL, string);
     }
 
     /**
