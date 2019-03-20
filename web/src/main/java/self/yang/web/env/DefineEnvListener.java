@@ -26,5 +26,6 @@ public class DefineEnvListener implements ApplicationListener {
         //current application event is class org.springframework.boot.context.event.ApplicationStartedEvent at 2019-03-20T07:44:49.244Z
         //current application event is class org.springframework.boot.context.event.ApplicationReadyEvent at 2019-03-20T07:44:49.246Z
         log.error("current application event is {} at {}", applicationEvent.getClass(), Instant.now(Clock.systemDefaultZone()).toString());
+
     }
 }
