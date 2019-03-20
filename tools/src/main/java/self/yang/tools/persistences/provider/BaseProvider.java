@@ -1,5 +1,7 @@
 package self.yang.tools.persistences.provider;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.apache.ibatis.jdbc.SQL;
 import self.yang.tools.persistences.dos.BaseDO;
 import self.yang.tools.utils.ClassUtil;
@@ -26,17 +28,13 @@ public class BaseProvider {
             Field[] declaredFields = aClass.getDeclaredFields();
 
             for (Field declaredField : declaredFields) {
-                // 获取属性名以及相关的get方法
-                String key = declaredField.getName();
+                Model check = check(declaredField, baseDO);
 
-                Object value = ClassUtil.invokeModelNoParametersMethod(baseDO,
-                        "get" + MainUtil.getTopUpperString(key));
-
-                if (null == value) {
+                if (null == check) {
                     continue;
                 }
 
-                SET("`" + declaredField.getAnnotation(Column.class).name() + "`" + "=#{" + key + "}");
+                SET("`" + check.getName() + "`" + "=#{" + check.getKey() + "}");
             }
 
             WHERE("id = #{id}");
@@ -60,20 +58,45 @@ public class BaseProvider {
             Field[] declaredFields = aClass.getDeclaredFields();
 
             for (Field declaredField : declaredFields) {
-                // 获取属性名以及相关的get方法
-                String key = declaredField.getName();
 
-                Object value = ClassUtil.invokeModelNoParametersMethod(baseDO,
-                        "get" + MainUtil.getTopUpperString(key));
+                Model check = check(declaredField, baseDO);
 
-                if (null == value) {
+                if (null == check) {
                     continue;
                 }
 
-                Column annotation = declaredField.getAnnotation(Column.class);
-
-                VALUES("`" + annotation.name() + "`", "#{" + key + "}");
+                VALUES("`" + check.getName() + "`", "#{" + check.getKey() + "}");
             }
         }}.toString();
     }
+
+    private Model check(Field declaredField, Object object) {
+        Column annotation = declaredField.getAnnotation(Column.class);
+
+        if (null == annotation) {
+            return null;
+        }
+
+        // 获取属性名以及相关的get方法
+        String key = declaredField.getName();
+
+        Object value = ClassUtil.invokeModelNoParametersMethod(object, "get" + MainUtil.getTopUpperString(key));
+
+        if (null == value) {
+            return null;
+        }
+
+        return new Model(annotation.name(), value, key);
+    }
+
+    @Getter
+    @AllArgsConstructor
+    private class Model {
+        private String name;
+
+        private Object value;
+
+        private String key;
+    }
+
 }
