@@ -1,5 +1,7 @@
 package self.yang.tools.guava;
 
+import com.google.common.collect.Lists;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -16,6 +18,8 @@ public class Main {
         //	at self.yang.tools.guava.Main.print(Main.java:19)
         //	at self.yang.tools.guava.Main.main(Main.java:15)
         print(null);
+
+        Lists.newArrayList();
     }
 
     public static void print(String... params) {
