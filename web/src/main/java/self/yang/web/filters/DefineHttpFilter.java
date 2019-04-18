@@ -18,9 +18,11 @@ import java.io.IOException;
  * @date 2019/04/18
  */
 @Slf4j
-@WebFilter(urlPatterns = {"/**"})
+@WebFilter(urlPatterns = {DefineHttpFilter.URL_PATTERN})
 @Configuration
 public class DefineHttpFilter extends HttpFilter {
+
+    static final String URL_PATTERN = "/**";
 
     @Override
     protected void doFilter(
