@@ -4,7 +4,6 @@ import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.lang.reflect.Method;
@@ -41,12 +40,7 @@ public class Beans implements MethodInterceptor {
         Bean bean = (Bean) newInstance(Bean.class);
 
         bean.addPropertyChangeListener(
-                new PropertyChangeListener() {
-                    @Override
-                    public void propertyChange(PropertyChangeEvent evt) {
-                        System.out.println(evt);
-                    }
-                }
+                evt -> System.out.println(evt)
         );
 
         bean.setSampleProperty("TEST");
