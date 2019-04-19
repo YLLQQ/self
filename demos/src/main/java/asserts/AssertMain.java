@@ -8,5 +8,7 @@ public class AssertMain {
 
     public static void printException() {
         Assert.stringIsEmpty(" ");
+
+        System.out.println(true);
     }
 }
