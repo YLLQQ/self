@@ -1,5 +1,6 @@
 package self.yang.tools.utils;
 
+import com.google.common.collect.Lists;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.xml.security.signature.XMLSignature;
 import org.apache.xml.security.transforms.Transforms;
@@ -25,6 +26,7 @@ import java.security.PublicKey;
 import java.security.Signature;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.List;
 
 public class SignatureTool {
 
@@ -78,6 +80,43 @@ public class SignatureTool {
 
         System.out.println("验签结果如下：");
         System.out.println(result);
+
+        List<Integer> nums = Lists.newArrayList(1, 1, null, 2, 3, 4, null, 5, 6, 7, 8, 9, 10);
+        System.out.println("sum is:" +
+                        nums.stream()
+                                .filter(num -> num != null)
+                                // 1，1，2，3，4，5，6，7，8，9，10
+                                .distinct()
+                                // 1，2，3，4，5，6，7，8，9，10
+                                .mapToInt(num -> num * 2)
+                                // 2，4，6，8，10，12，14，16，18，20
+                                .skip(2)
+                                // 6，8，10，12，14，16，18，20
+                                .limit(4)
+                                // 6，8，10，12
+                                .sum()
+                // 36
+        );
+
+        nums.stream().forEach(x -> System.out.print(x + "\t"));
+        System.out.println();
+
+        nums.stream().filter(num -> num != null).forEach(x -> System.out.print(x + "\t"));
+        System.out.println();
+
+        nums.stream().filter(num -> num != null).distinct().forEach(x -> System.out.print(x + "\t"));
+        System.out.println();
+
+        nums.stream().filter(num -> num != null).distinct().mapToInt(num -> num * 2).forEach(x -> System.out.print(x + "\t"));
+        System.out.println();
+
+        nums.stream().filter(num -> num != null).distinct().mapToInt(num -> num * 2).skip(2).forEach(x -> System.out.print(x + "\t"));
+        System.out.println();
+
+        nums.stream().filter(num -> num != null).distinct().mapToInt(num -> num * 2).skip(2).limit(4).forEach(x -> System.out.print(x + "\t"));
+        System.out.println();
+
+        nums.stream().filter(num -> num != null).peek(x -> System.out.print(x + "\t")).count();
 
     }
 
