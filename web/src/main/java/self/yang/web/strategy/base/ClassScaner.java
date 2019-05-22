@@ -1,4 +1,4 @@
-package self.yang.web.strategy;
+package self.yang.web.strategy.base;
 
 import org.springframework.beans.factory.BeanDefinitionStoreException;
 import org.springframework.context.ResourceLoaderAware;
@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * self.yang.web.strategy.ClassScaner
+ * self.yang.web.strategy.base.ClassScaner
  *
  * @author eleven
  * @date 2019/05/22

@@ -1,4 +1,4 @@
-package self.yang.web.strategy;
+package self.yang.web.strategy.base;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- * self.yang.web.strategy.BeanTool
+ * self.yang.web.strategy.base.BeanTool
  *
  * @author eleven
  * @date 2019/05/22

@@ -1,15 +1,16 @@
-package self.yang.web.strategy;
+package self.yang.web.strategy.base;
 
 import com.google.common.collect.Maps;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.stereotype.Component;
+import self.yang.web.strategy.HandlerType;
 
 import java.util.Map;
 
 /**
- * self.yang.web.strategy.HandlerProcessor
+ * self.yang.web.strategy.base.HandlerProcessor
  *
  * @author eleven
  * @date 2019/05/22
@@ -38,6 +39,7 @@ public class HandlerProcessor implements BeanFactoryPostProcessor {
         });
 
         HandlerContext context = new HandlerContext(handlerMap);
+
         beanFactory.registerSingleton(HandlerContext.class.getName(), context);
     }
 
