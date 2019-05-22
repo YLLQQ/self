@@ -44,8 +44,8 @@ public class ClassScaner implements ResourceLoaderAware {
             cs.addIncludeFilter(new AnnotationTypeFilter(anno));
         }
 
-
         Set<Class<?>> classes = new HashSet<>();
+
         for (String s : basePackages) {
             classes.addAll(cs.doScan(s));
         }
@@ -64,10 +64,8 @@ public class ClassScaner implements ResourceLoaderAware {
 
     @Override
     public void setResourceLoader(ResourceLoader resourceLoader) {
-        this.resourcePatternResolver = ResourcePatternUtils
-                .getResourcePatternResolver(resourceLoader);
-        this.metadataReaderFactory = new CachingMetadataReaderFactory(
-                resourceLoader);
+        this.resourcePatternResolver = ResourcePatternUtils.getResourcePatternResolver(resourceLoader);
+        this.metadataReaderFactory = new CachingMetadataReaderFactory(resourceLoader);
     }
 
     public void addIncludeFilter(TypeFilter includeFilter) {
@@ -85,6 +83,7 @@ public class ClassScaner implements ResourceLoaderAware {
 
     public Set<Class<?>> doScan(String basePackage) {
         Set<Class<?>> classes = new HashSet<>();
+
         try {
             String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX
                     + org.springframework.util.ClassUtils
@@ -108,10 +107,11 @@ public class ClassScaner implements ResourceLoaderAware {
                     }
                 }
             }
+
         } catch (IOException ex) {
-            throw new BeanDefinitionStoreException(
-                    "I/O failure during classpath scanning", ex);
+            throw new BeanDefinitionStoreException("I/O failure during classpath scanning", ex);
         }
+
         return classes;
     }
 
@@ -121,11 +121,13 @@ public class ClassScaner implements ResourceLoaderAware {
                 return false;
             }
         }
+
         for (TypeFilter tf : this.includeFilters) {
             if (tf.match(metadataReader, this.metadataReaderFactory)) {
                 return true;
             }
         }
+
         return false;
     }
 

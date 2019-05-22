@@ -30,10 +30,13 @@ public class HandlerProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         Map<String, Class> handlerMap = Maps.newHashMapWithExpectedSize(3);
+
         ClassScaner.scan(HANDLER_PACKAGE, HandlerType.class).forEach(clazz -> {
             String type = clazz.getAnnotation(HandlerType.class).value();
+
             handlerMap.put(type, clazz);
         });
+
         HandlerContext context = new HandlerContext(handlerMap);
         beanFactory.registerSingleton(HandlerContext.class.getName(), context);
     }

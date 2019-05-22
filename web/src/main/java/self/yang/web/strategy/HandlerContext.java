@@ -8,6 +8,7 @@ import java.util.Map;
  * @author eleven
  * @date 2019/05/22
  */
+@SuppressWarnings("unchecked")
 public class HandlerContext {
 
     private Map<String, Class> handlerMap;
