@@ -34,4 +34,3 @@ pagehelper:
 context:
   listener:
     classes: self.yang.web.filters.SelfApplicationListener
-
