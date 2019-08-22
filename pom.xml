@@ -21,7 +21,7 @@
         <module>tools</module>
         <module>web</module>
         <module>demos</module>
-        <module>undertow/web</module>
+        <module>undertow-web</module>
     </modules>
 
     <properties>
