@@ -11,6 +11,8 @@ import org.apache.rocketmq.remoting.exception.RemotingException;
 import java.io.UnsupportedEncodingException;
 import java.util.stream.IntStream;
 
+import static self.mq.bin.common.ProjectCommon.SIMPLE_GROUP_NAME;
+
 /**
  * @author yangguoqing
  */
@@ -31,7 +33,7 @@ public class SendMessage {
 	public static void sendMessagesInOneWayMode() {
 
 		//Instantiate with a producer group name.
-		DefaultMQProducer producer = new DefaultMQProducer("first_rocket_mq_group");
+		DefaultMQProducer producer = new DefaultMQProducer(SIMPLE_GROUP_NAME);
 
 		// Specify name server addresses.
 		producer.setNamesrvAddr("localhost:9876");
@@ -70,7 +72,7 @@ public class SendMessage {
 	 */
 	public static void sendMessagesAsynchronously() {
 		//Instantiate with a producer group name.
-		DefaultMQProducer producer = new DefaultMQProducer("first_rocket_mq_group");
+		DefaultMQProducer producer = new DefaultMQProducer(SIMPLE_GROUP_NAME);
 
 		// Specify name server addresses.
 		producer.setNamesrvAddr("localhost:9876");
@@ -126,7 +128,7 @@ public class SendMessage {
 	 */
 	public static void sendMessagesSynchronously() {
 		//Instantiate with a producer group name.
-		DefaultMQProducer producer = new DefaultMQProducer("first_rocket_mq_group");
+		DefaultMQProducer producer = new DefaultMQProducer(SIMPLE_GROUP_NAME);
 
 		// Specify name server addresses.
 		producer.setNamesrvAddr("localhost:9876");

@@ -5,6 +5,8 @@ import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
 
+import static self.mq.bin.common.ProjectCommon.SIMPLE_GROUP_NAME;
+
 /**
  * @author yangguoqing
  */
@@ -16,7 +18,7 @@ public class ConsumeMessage {
 
 	public static void consumeMessages() {
 		// Instantiate with specified consumer group name.
-		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("first_rocket_mq_group");
+		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(SIMPLE_GROUP_NAME);
 
 		// Specify name server addresses.
 		consumer.setNamesrvAddr("localhost:9876");
