@@ -10,6 +10,8 @@ import org.apache.rocketmq.remoting.exception.RemotingException;
 
 import java.io.UnsupportedEncodingException;
 
+import static self.mq.bin.common.ProjectCommon.BROADCAST_GROUP_NAME;
+
 /**
  * @author yangguoqing
  */
@@ -17,7 +19,7 @@ public class BroadcastProducer {
 
 	public static void main(String[] args) throws UnsupportedEncodingException, InterruptedException,
 			RemotingException, MQClientException, MQBrokerException {
-		DefaultMQProducer producer = new DefaultMQProducer("ProducerGroupName");
+		DefaultMQProducer producer = new DefaultMQProducer(BROADCAST_GROUP_NAME);
 
 		producer.setNamesrvAddr("localhost:9876");
 

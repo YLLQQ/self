@@ -11,13 +11,15 @@ import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 
 import java.util.List;
 
+import static self.mq.bin.common.ProjectCommon.BROADCAST_GROUP_NAME;
+
 /**
  * @author yangguoqing
  */
 public class BroadcastConsumer {
 
 	public static void main(String[] args) throws Exception {
-		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("example_group_name");
+		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(BROADCAST_GROUP_NAME);
 
 		consumer.setNamesrvAddr("localhost:9876");
 
