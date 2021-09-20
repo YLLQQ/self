@@ -29,7 +29,7 @@
         <mybatis-spring-boot-starter.version>1.3.0</mybatis-spring-boot-starter.version>
         <persistence-api.version>1.0</persistence-api.version>
         <lombok.version>1.18.4</lombok.version>
-        <xmlsec.version>2.0.10</xmlsec.version>
+        <xmlsec.version>2.1.7</xmlsec.version>
     </properties>
 
     <dependencies>
